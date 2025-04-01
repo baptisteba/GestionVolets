@@ -217,6 +217,20 @@ app.post('/api/trigger', async (req, res) => {
               body: errorText 
             });
             
+            // Special handling for authentication errors
+            if (response.status === 401) {
+              log.error('Authentication failed with Home Assistant', {
+                apiUrl: haUrl,
+                tokenLength: config.token ? config.token.length : 0
+              });
+              
+              return res.status(401).json({
+                error: `Home Assistant returned error 401`,
+                details: '401: Unauthorized - Invalid or expired token. Please check your Home Assistant credentials.',
+                requiresAuthentication: true
+              });
+            }
+            
             return res.status(response.status).json({
               error: `Home Assistant returned error ${response.status}`,
               details: errorText

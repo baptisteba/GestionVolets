@@ -71,6 +71,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Token help toggle
+  const tokenHelp = document.getElementById('tokenHelp');
+  const tokenHelpText = document.getElementById('tokenHelpText');
+  if (tokenHelp && tokenHelpText) {
+    tokenHelp.addEventListener('click', (e) => {
+      e.preventDefault();
+      tokenHelpText.style.display = tokenHelpText.style.display === 'none' ? 'block' : 'none';
+    });
+  }
+
   settingsForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -185,9 +195,21 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         console.error('Server error:', data);
         let errorMessage = data.error || 'Erreur lors de l\'envoi de la commande';
-        if (data.details) {
+        
+        // Handle specific error cases
+        if (response.status === 401 || (data.error && data.error.includes('401'))) {
+          errorMessage = 'Erreur d\'authentification avec Home Assistant. Veuillez vérifier votre token dans les paramètres.';
+          // Open settings modal automatically
+          setTimeout(() => {
+            document.body.style.overflow = 'hidden';
+            settingsModal.classList.add('show');
+            // Clear token to force re-entry
+            tokenInput.value = '';
+          }, 1500);
+        } else if (data.details) {
           errorMessage += ` - ${data.details}`;
         }
+        
         showNotification(errorMessage, true);
       }
       
