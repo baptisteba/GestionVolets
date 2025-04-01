@@ -13,6 +13,7 @@ services:
       - homeassistant_gestion_volets
 
 networks:
-  homeassistant:
+  homeassistant_gestion_volets:
     name: homeassistant_gestion_volets
-    external: true 
+    external: true
+
