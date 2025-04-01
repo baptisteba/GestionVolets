@@ -4,8 +4,7 @@ services:
   gestion-volets:
     build: .
     container_name: gestion-volets
-    ports:
-      - "3157:3000"
+    network_mode: "host"
     volumes:
       - ./config:/app/config
       - ./logs:/app/logs
@@ -14,8 +13,6 @@ services:
       - NODE_ENV=production
       - DEBUG=node-fetch:*
       - NODE_TLS_REJECT_UNAUTHORIZED=0
-    networks:
-      - homeassistant_gestion_volets
     logging:
       driver: "json-file"
       options:

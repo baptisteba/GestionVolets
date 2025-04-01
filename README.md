@@ -51,9 +51,11 @@ Pour voir les logs de l'application :
 docker-compose logs -f
 ```
 
+Les logs sont également disponibles dans le dossier `logs/`.
+
 ## Notes importantes
 
-- L'application utilise le port 3157 en externe et 3000 en interne
-- Un réseau Docker dédié "homeassistant_gestion_volets" est créé automatiquement
+- L'application utilise le mode réseau "host" pour accéder aux ressources Tailscale
+- Cette configuration permet au conteneur d'accéder aux mêmes ressources réseau que l'hôte
 - Les configurations sont persistantes grâce au volume monté dans ./config
 - Assurez-vous que votre instance Home Assistant est accessible via l'URL configurée 

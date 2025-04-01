@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3157;
 
 // Create logs directory
 const logsDir = path.join(__dirname, 'logs');
