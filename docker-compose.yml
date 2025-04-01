@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   gestion-volets:
     build: .
@@ -11,8 +9,9 @@ services:
     restart: unless-stopped
     networks:
       - homeassistant_gestion_volets
+    environment:
+      - NODE_ENV=production
 
 networks:
-  homeassistant:
-    name: homeassistant_gestion_volets
-    external: true 
+  homeassistant_gestion_volets:
+    driver: bridge 

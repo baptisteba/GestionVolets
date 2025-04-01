@@ -6,7 +6,6 @@ Application web pour contrôler les volets via Home Assistant.
 
 - Docker
 - Docker Compose
-- Un réseau Docker nommé "homeassistant_gestion_volets" (où se trouve votre instance Home Assistant)
 
 ## Installation
 
@@ -16,12 +15,7 @@ git clone <repository-url>
 cd gestion-volets
 ```
 
-2. Créez le réseau Docker si ce n'est pas déjà fait :
-```bash
-docker network create homeassistant
-```
-
-3. Démarrez l'application :
+2. Démarrez l'application :
 ```bash
 docker-compose up -d
 ```
@@ -33,7 +27,7 @@ L'application sera accessible à l'adresse : http://localhost:3157
 1. Accédez à l'interface web
 2. Cliquez sur l'icône des paramètres (⚙️)
 3. Configurez :
-   - URL de l'API Home Assistant (ex: http://homeassistant:8123)
+   - URL de l'API Home Assistant (ex: http://homeassistant-passman:8123)
    - Token d'accès longue durée Home Assistant
 
 ## Persistance des données
@@ -45,7 +39,7 @@ Les paramètres sont stockés dans le dossier `config/` qui est monté comme un 
 Pour mettre à jour l'application :
 
 ```bash
-docker-compose pull
+docker-compose down
 docker-compose up -d --build
 ```
 
@@ -55,4 +49,11 @@ Pour voir les logs de l'application :
 
 ```bash
 docker-compose logs -f
-``` 
+```
+
+## Notes importantes
+
+- L'application utilise le port 3157 en externe et 3000 en interne
+- Un réseau Docker dédié "homeassistant_gestion_volets" est créé automatiquement
+- Les configurations sont persistantes grâce au volume monté dans ./config
+- Assurez-vous que votre instance Home Assistant est accessible via l'URL configurée 
