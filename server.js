@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const app = express();
-const port = process.env.PORT || 3157;
+const port = 3157; // Forcer le port 3157 sans fallback à 3000
 
 // Create logs directory
 const logsDir = path.join(__dirname, 'logs');
