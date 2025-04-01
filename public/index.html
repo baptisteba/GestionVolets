@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="rgb(22, 34, 114)">
+  <meta name="description" content="Application de gestion des volets via Home Assistant">
+  <title>Gestion Volets</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Gestion Volets</h1>
+    </header>
+
+    <main>
+      <p class="action-description">Contrôle de <b>TOUS</b> les volets</p>
+      <div class="controls">
+        <div class="action-buttons">
+          <button id="openBtn" class="action-btn open">
+            <i class="fas fa-arrow-up"></i> Ouvrir
+          </button>
+          <button id="closeBtn" class="action-btn close">
+            <i class="fas fa-arrow-down"></i> Fermer
+          </button>
+        </div>
+        <button id="checkBtn" class="check-btn">
+          <i class="fas fa-search"></i> Vérifier l'état
+        </button>
+      </div>
+    </main>
+
+    <footer>
+      <button id="settingsBtn" class="settings-btn" aria-label="Paramètres">
+        <i class="fas fa-cog"></i>
+      </button>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="modal-close">&times;</span>
+        <h2>Paramètres</h2>
+        <form id="settingsForm">
+          <div class="form-group">
+            <label for="apiUrl">URL API Home Assistant</label>
+            <input type="text" id="apiUrl" placeholder="http://homeassistant:8123" required>
+            <small>Exemple: http://homeassistant:8123 (sans / à la fin)</small>
+          </div>
+          <div class="form-group">
+            <label for="token">Token d'accès</label>
+            <div class="token-container">
+              <input type="password" id="token" placeholder="Token de longue durée" required autocomplete="current-password">
+              <button type="button" id="toggleToken" class="toggle-btn">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <small>Token d'authentification longue durée de Home Assistant</small>
+          </div>
+          <button type="submit" class="save-btn">
+            <i class="fas fa-save"></i> Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Status Notification -->
+    <div id="notification" class="notification">
+      <span id="notificationText"></span>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html> 

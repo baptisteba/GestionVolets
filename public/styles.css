@@ -1,0 +1,482 @@
+:root {
+  --primary-color: rgb(22, 34, 114);
+  --primary-light: rgb(41, 57, 156);
+  --primary-dark: rgb(14, 21, 71);
+  --secondary-color: #ff6b6b;
+  --accent-color: #4ecdc4;
+  --background-color: #f7f9fc;
+  --card-background: #ffffff;
+  --text-color: #333333;
+  --text-light: #6c757d;
+  --text-dark: #212529;
+  --success-color: #20c997;
+  --error-color: #fa5252;
+  --border-color: #eaedf2;
+  --shadow-color: rgba(22, 34, 114, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--card-background);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0;
+  position: relative;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+.settings-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  position: static;
+}
+
+.settings-btn:hover {
+  background-color: var(--background-color);
+  transform: rotate(30deg);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  gap: 20px;
+  width: 100%;
+}
+
+.logo {
+  font-size: 4.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  filter: drop-shadow(0 10px 15px var(--shadow-color));
+  transition: transform 0.8s ease;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo i {
+  display: block;
+  line-height: 1;
+}
+
+.logo:hover {
+  transform: translateY(-5px);
+}
+
+.action-description {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 360px;
+  padding: 0;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.check-btn {
+  padding: 12px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: var(--primary-color);
+  width: 100%;
+}
+
+.check-btn i {
+  font-size: 1rem;
+}
+
+.check-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.check-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.action-btn {
+  padding: 12px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin: 0;
+  letter-spacing: 0.3px;
+  position: relative;
+  z-index: 1;
+}
+
+.action-btn i {
+  font-size: 1rem;
+}
+
+.action-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.action-btn.open, .action-btn.close {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+}
+
+/* Styles pour assurer la visibilité et le bon placement des boutons */
+.action-btn.open {
+  background-color: transparent;
+  color: var(--primary-color);
+  /* Réinitialiser tout positionnement qui pourrait causer des problèmes */
+  position: static;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.action-btn.close {
+  background-color: transparent;
+  color: var(--primary-color);
+  /* Réinitialiser tout positionnement qui pourrait causer des problèmes */
+  position: static;
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 37, 41, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  display: flex;
+}
+
+.modal-content {
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+  font-weight: normal;
+}
+
+.modal-close:hover {
+  color: var(--text-dark);
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(22, 34, 114, 0.1);
+}
+
+small {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-light);
+  font-size: 0.8rem;
+}
+
+.token-container {
+  display: flex;
+  position: relative;
+}
+
+.token-container input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.toggle-btn:hover {
+  color: var(--primary-color);
+}
+
+.save-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.save-btn:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px var(--shadow-color);
+}
+
+.save-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Button disabled state */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Notification */
+.notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 25px;
+  border-radius: 10px;
+  background-color: var(--success-color);
+  color: white;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.notification.error {
+  background-color: var(--error-color);
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translate(-50%, -10px);
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 16px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .logo {
+    font-size: 5rem;
+    margin-top: 10px;
+  }
+  
+  main {
+    padding: 0;
+    gap: 20px;
+    flex: 1;
+  }
+  
+  .controls {
+    width: 75%;
+  }
+  
+  .action-buttons {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .action-btn, .check-btn {
+    width: 100%;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 20px;
+} 

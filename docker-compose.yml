@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  gestion-volets:
+    build: .
+    container_name: gestion-volets
+    ports:
+      - "3157:3000"
+    volumes:
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - homeassistant_gestion_volets
+
+networks:
+  homeassistant:
+    name: homeassistant_gestion_volets
+    external: true 
