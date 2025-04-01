@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${actionText[action]}`;
       
+      console.log(`Sending ${action} action to server...`);
       const response = await fetch('/api/trigger', {
         method: 'POST',
         headers: {
@@ -182,12 +183,18 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         showNotification(successMessages[action]);
       } else {
-        showNotification(data.error || 'Erreur lors de l\'envoi de la commande', true);
+        console.error('Server error:', data);
+        let errorMessage = data.error || 'Erreur lors de l\'envoi de la commande';
+        if (data.details) {
+          errorMessage += ` - ${data.details}`;
+        }
+        showNotification(errorMessage, true);
       }
       
       updateButtonsState(true);
     } catch (error) {
-      showNotification('Erreur de connexion au serveur', true);
+      console.error('Connection error:', error);
+      showNotification('Erreur de connexion au serveur: ' + error.message, true);
       updateButtonsState(true);
       
       openBtn.innerHTML = `<i class="fas fa-arrow-up"></i> Ouvrir TOUS`;

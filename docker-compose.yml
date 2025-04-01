@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   gestion-volets:
     build: .
@@ -6,11 +8,19 @@ services:
       - "3157:3000"
     volumes:
       - ./config:/app/config
+      - ./logs:/app/logs
     restart: unless-stopped
-    networks:
-      - homeassistant_gestion_volets
     environment:
       - NODE_ENV=production
+      - DEBUG=node-fetch:*
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    networks:
+      - homeassistant_gestion_volets
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
 networks:
   homeassistant_gestion_volets:
