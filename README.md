@@ -6,7 +6,7 @@ Application web pour contrôler les volets via Home Assistant.
 
 - Docker
 - Docker Compose
-- Un réseau Docker nommé "homeassistant" (où se trouve votre instance Home Assistant)
+- Un réseau Docker nommé "homeassistant_gestion_volets" (où se trouve votre instance Home Assistant)
 
 ## Installation
 
