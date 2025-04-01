@@ -1,11 +1,10 @@
 {
-  "name": "gestionvolets",
+  "name": "gestion-volets",
   "version": "1.0.0",
   "description": "Application web pour contrôler les volets via Home Assistant",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [
     "home-assistant",
@@ -15,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "node-fetch": "^2.7.0"
   },

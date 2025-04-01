@@ -109,14 +109,16 @@ app.post('/api/trigger', async (req, res) => {
     });
     
     if (!response.ok) {
-      throw new Error(`Home Assistant returned ${response.status}`);
+      const errorText = await response.text();
+      console.error(`Home Assistant error (${response.status}):`, errorText);
+      throw new Error(`Home Assistant returned ${response.status}: ${errorText}`);
     }
     
     console.log('Success triggering automation');
     res.json({ success: true });
   } catch (error) {
     console.error('Error triggering automation:', error);
-    res.status(500).json({ error: 'Error triggering automation' });
+    res.status(500).json({ error: error.message || 'Error triggering automation' });
   }
 });
 
