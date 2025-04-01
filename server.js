@@ -3,7 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const app = express();
-const port = 3157; // Forcer le port 3157 sans fallback à 3000
+
+// Forcer l'utilisation du port 3157 explicitement, sans considérer la variable d'environnement
+// pour éviter les conflits avec le port 3000
+const port = 3157;
 
 // Create logs directory
 const logsDir = path.join(__dirname, 'logs');
@@ -58,15 +61,9 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.static('public'));
 
-// Configure Morgan for logging in production
-app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
-  next();
-});
-
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(`${new Date().toISOString()} - Error:`, err);
+  logger.error(`Error handling request ${req.method} ${req.url}`, err);
   res.status(500).json({ error: 'Server error', message: err.message });
 });
 

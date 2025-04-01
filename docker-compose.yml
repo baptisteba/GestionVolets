@@ -13,12 +13,9 @@ services:
       - NODE_ENV=production
       - DEBUG=node-fetch:*
       - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - PORT=3157
     logging:
       driver: "json-file"
       options:
         max-size: "10m"
         max-file: "3"
-
-networks:
-  homeassistant_gestion_volets:
-    driver: bridge 
