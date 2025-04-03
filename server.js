@@ -158,7 +158,7 @@ app.post('/api/trigger', async (req, res) => {
       // Map action to entity_id
       const entityMap = {
         'open': 'automation.ouvrirvolets',
-        'close': 'automation.fermervolets',
+        'close': 'automation.apifermervolets',
         'check': 'automation.veriffermeture'
       };
       
@@ -199,7 +199,7 @@ app.post('/api/trigger', async (req, res) => {
         
         // Make request with longer timeout
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+        const timeoutId = setTimeout(() => controller.abort(), 90000); // 90 second timeout
         
         try {
           const response = await fetch(haUrl, {

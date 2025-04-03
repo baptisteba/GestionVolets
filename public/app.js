@@ -192,6 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
           'check': 'Vérification en cours'
         };
         showNotification(successMessages[action]);
+        
+        // Re-enable buttons after 1 minute and 30 seconds
+        setTimeout(() => {
+          updateButtonsState(true);
+        }, 90000); // 90 seconds
       } else {
         console.error('Server error:', data);
         let errorMessage = data.error || 'Erreur lors de l\'envoi de la commande';
@@ -211,9 +216,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         showNotification(errorMessage, true);
+        updateButtonsState(true);
       }
-      
-      updateButtonsState(true);
     } catch (error) {
       console.error('Connection error:', error);
       showNotification('Erreur de connexion au serveur: ' + error.message, true);
