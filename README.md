@@ -1,4 +1,4 @@
-# Gestion Volets Passman
+# Gestion Volets
 
 Application web pour contrôler les volets via Home Assistant.
 
@@ -27,7 +27,7 @@ L'application sera accessible à l'adresse : http://localhost:3157
 1. Accédez à l'interface web
 2. Cliquez sur l'icône des paramètres (⚙️)
 3. Configurez :
-   - URL de l'API Home Assistant (ex: http://homeassistant-passman:8123)
+   - URL de l'API Home Assistant (ex: http://homeassistantURL:8123)
    - Token d'accès longue durée Home Assistant
 
 ## Persistance des données
